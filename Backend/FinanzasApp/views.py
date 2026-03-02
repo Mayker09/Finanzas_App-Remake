@@ -19,7 +19,7 @@ from rest_framework.permissions import AllowAny
 def register(request):
     serializer = UserSerializer(data=request.data)
     if serializer.is_valid():
-        user = serializer.save() # se arreglo esta parte que creaba una instancia que creba el usuario 2 veces y daba error
+        user = serializer.save() # se arreglo esta parte que creaba una instancia que creaba el usuario 2 veces y daba error
         user.set_password(request.data['password'])
         user.save()
         token = Token.objects.create(user=user)
